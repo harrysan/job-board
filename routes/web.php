@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('', fn() => to_route('jobs.index'));
+
+Route::resource('jobs', JobController::class)
+    ->only(['index', 'show']);
